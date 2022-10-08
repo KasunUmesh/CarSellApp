@@ -22,17 +22,19 @@ export default function Login() {
         </Center>
 
         <Center bg={"#ffffff"} h={"500px"} marginTop={"-4"} roundedTopRight={"70px"}  >
-          <Heading position={"absolute"} color={"#2c3e50"} top={"10"} fontSize={"4xl"}  >WELCOME</Heading>
-          <Text position={"absolute"} color={"#34495e"} top={"85"} fontSize={"2xl"} bold >Login</Text>
+          <Heading position={"absolute"} color={"#2c3e50"} top={"5"} fontSize={"4xl"}  >REGISTER</Heading>
+          <Text position={"absolute"} color={"#34495e"} top={"59"} fontSize={"md"}  >Create New Account</Text>
 
-          <Input w={"85%"} top={"-10"} placeholder="User Name" marginTop={"10"} />
-          <Input w={"85%"} marginTop={"1"} color={"black"} outlineColor={"blue"} placeholder="Password" />
+          <Input w={"85%"} top={"-10"} placeholder="First Name" marginTop={"10"} />
+          <Input w={"85%"} marginTop={"1"} color={"black"} outlineColor={"blue"} placeholder="Last Name" />
+          <Input w={"85%"} placeholder="Email" marginTop={"3"} />
+          <Input w={"85%"} placeholder="Password" marginTop={"3"} />
 
-          <Button bottom={"-15"} marginTop={"6"} size="md" colorScheme="green" w={"50%"}>
+          <Button bottom={"-10"} marginTop={"3"} size="md" colorScheme="green" w={"50%"}>
             Sign In
           </Button>
 
-          <Link isExternal _text={{color: "blue.900"}} marginTop={"5"} >Register</Link>
+          <Link isExternal _text={{color: "blue.900"}} marginTop={"4"} >Back</Link>
           
         </Center>
 
