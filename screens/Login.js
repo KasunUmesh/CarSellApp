@@ -26,16 +26,13 @@ export default function Login({navigation}) {
           <Input w={"85%"} top={"-10"} placeholder="User Name" marginTop={"10"} />
           <Input w={"85%"} marginTop={"1"} color={"black"} outlineColor={"blue"} placeholder="Password" />
 
-          <Button bottom={"-15"} marginTop={"6"} size="md" colorScheme="green" w={"50%"} onPress={()=>{navigation.navigate("Home")}} >
+          <Button bottom={"-15"} marginTop={"6"} size="md" colorScheme="green" w={"50%"} onPress={()=>{navigation.navigate("Router")}} >
             Sign In
           </Button>
 
           <Link isExternal _text={{color: "blue.900"}} marginTop={"5"} onPress={()=>{navigation.navigate("Register")}} >Register</Link>
           
         </Center>
-
-        
-
       </VStack>
    
     </NativeBaseProvider>
