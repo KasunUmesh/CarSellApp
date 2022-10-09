@@ -1,4 +1,4 @@
-import {View, Text, Image} from 'react-native';
+import {View, Text, Image, StatusBar, StyleSheet, Animated} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {FlatList} from 'react-native-gesture-handler';
 
@@ -7,6 +7,7 @@ const APP_ID = '6342951607e51832293d258f';
 
 const SPACING = 20;
 const AVATAR_SIZE = 70;
+const ITEM_SIZE = AVATAR_SIZE + SPACING * 3;
 
 export default function Home() {
   const [data, setData] = useState([]);
@@ -28,23 +29,65 @@ export default function Home() {
       .finally(() => setIsloading(false));
   };
 
+  const scrollY = React.useRef(new Animated.Value(0)).current;
+
   return (
-    <View style={{flex: 1, backgroundColor: '#fff'}}>
-      <FlatList
+    <View style={{flex: 1, backgroundColor: '#ecf0f1'}}>
+      {/* <Image
+        source={require('../assets/home.png')}
+        style={StyleSheet.absoluteFillobject}
+        blurRadius={50}
+      /> */}
+      <Animated.FlatList
         data={data}
+        onScroll={Animated.event([
+          {nativeEvent: {contentOffset: {y: scrollY}}},
+        ])}
         keyExtractor={item => `key-${item.id}`}
         contentContainerStyle={{
           padding: SPACING,
+          paddingTop: StatusBar.currentHeight || 42,
         }}
         renderItem={({item, index}) => {
+          const inputRange = [
+            -1,
+            0,
+            ITEM_SIZE * index,
+            ITEM_SIZE * (index + 2),
+          ];
+          const opacityInputRange = [
+            -1,
+            0,
+            ITEM_SIZE * index,
+            ITEM_SIZE * (index + 0.5),
+          ];
+
+          const scale = scrollY.interpolate({
+            inputRange: opacityInputRange,
+            outputRange: [1, 1, 1, 0],
+          });
+          const opacity = scrollY.interpolate({
+            inputRange,
+            outputRange: [1, 1, 1, 0],
+          });
+
           return (
-            <View
+            <Animated.View
               style={{
                 flexDirection: 'row',
                 padding: SPACING,
                 marginBottom: SPACING,
-                backgroundColor: 'red',
+                backgroundColor: 'rgba(255,255,255,0.8)',
                 borderRadius: 12,
+                shadowColor: '#000',
+                shadowOffset: {
+                  width: 0,
+                  height: 10,
+                },
+                shadowOpacity: 5,
+                shadowRadius: 20,
+                opacity,
+                transform: [{scale}],
               }}>
               <Image
                 source={{uri: item.picture}}
@@ -60,7 +103,7 @@ export default function Home() {
                 <Text>{item.firstName}</Text>
                 <Text>{item.lastName}</Text>
               </View>
-            </View>
+            </Animated.View>
           );
         }}
       />

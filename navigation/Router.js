@@ -36,7 +36,7 @@ export default function Router() {
           return <Ionicons name={iconName} size={size} color={color} />;
         },
       })}>
-      <Tab.Screen options={{headerShown: false}} name="Home" component={Home} />
+      <Tab.Screen name="Home" component={Home} />
       <Tab.Screen name="New Car" component={AddCar} />
       <Tab.Screen
         options={{headerShown: false}}
