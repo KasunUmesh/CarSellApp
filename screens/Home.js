@@ -1,4 +1,4 @@
-import {View, Text} from 'react-native';
+import {View, Text, Image} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {FlatList} from 'react-native-gesture-handler';
 
@@ -33,15 +33,26 @@ export default function Home() {
       <FlatList
         data={data}
         keyExtractor={item => `key-${item.id}`}
+        contentContainerStyle={{
+          padding: SPACING,
+        }}
         renderItem={({item, index}) => {
           return (
-            <View style={{flexDirection: 'row'}}>
+            <View
+              style={{
+                flexDirection: 'row',
+                padding: SPACING,
+                marginBottom: SPACING,
+                backgroundColor: 'red',
+                borderRadius: 12,
+              }}>
               <Image
                 source={{uri: item.picture}}
                 style={{
                   width: AVATAR_SIZE,
                   height: AVATAR_SIZE,
                   borderRadius: AVATAR_SIZE,
+                  marginRight: SPACING / 2,
                 }}
               />
               <View>
