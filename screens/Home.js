@@ -6,8 +6,11 @@ const BASE_URL = 'https://dummyapi.io/data/v1/';
 const APP_ID = '6342951607e51832293d258f';
 
 const SPACING = 20;
-const AVATAR_SIZE = 70;
+const AVATAR_SIZE = 80;
 const ITEM_SIZE = AVATAR_SIZE + SPACING * 3;
+
+const BG_IMG =
+  'https://img.freepik.com/free-vector/blue-pink-halftone-background_53876-99004.jpg?w=2000';
 
 export default function Home() {
   const [data, setData] = useState([]);
@@ -33,11 +36,11 @@ export default function Home() {
 
   return (
     <View style={{flex: 1, backgroundColor: '#ecf0f1'}}>
-      {/* <Image
-        source={require('../assets/home.png')}
-        style={StyleSheet.absoluteFillobject}
-        blurRadius={50}
-      /> */}
+      <Image
+        source={{uri: BG_IMG}}
+        style={StyleSheet.absoluteFillObject}
+        blurRadius={80}
+      />
       <Animated.FlatList
         data={data}
         onScroll={Animated.event([
@@ -46,7 +49,7 @@ export default function Home() {
         keyExtractor={item => `key-${item.id}`}
         contentContainerStyle={{
           padding: SPACING,
-          paddingTop: StatusBar.currentHeight || 42,
+          paddingTop: StatusBar.currentHeight || 40,
         }}
         renderItem={({item, index}) => {
           const inputRange = [
@@ -94,14 +97,20 @@ export default function Home() {
                 style={{
                   width: AVATAR_SIZE,
                   height: AVATAR_SIZE,
-                  borderRadius: AVATAR_SIZE,
+                  // borderRadius: AVATAR_SIZE,
                   marginRight: SPACING / 2,
                 }}
               />
               <View>
-                <Text>{item.title}</Text>
-                <Text>{item.firstName}</Text>
-                <Text>{item.lastName}</Text>
+                <Text style={{fontSize: 20, fontWeight: '500'}}>
+                  {item.title}
+                </Text>
+                <Text style={{fontSize: 20, fontWeight: '500'}}>
+                  {item.firstName}
+                </Text>
+                <Text style={{fontSize: 20, fontWeight: '500'}}>
+                  {item.lastName}
+                </Text>
               </View>
             </Animated.View>
           );

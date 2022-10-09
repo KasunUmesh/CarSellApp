@@ -35,8 +35,16 @@ export default function Router() {
 
           return <Ionicons name={iconName} size={size} color={color} />;
         },
+        headerTitleAlign: 'center',
+        headerStyle: {
+          backgroundColor: '#1c313a',
+        },
       })}>
-      <Tab.Screen name="Home" component={Home} />
+      <Tab.Screen
+        options={{headerTitleStyle: {color: '#ffffff'}}}
+        name="Home"
+        component={Home}
+      />
       <Tab.Screen name="New Car" component={AddCar} />
       <Tab.Screen
         options={{headerShown: false}}
