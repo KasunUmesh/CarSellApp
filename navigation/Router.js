@@ -8,9 +8,10 @@ import {NavigationContainer} from '@react-navigation/native';
 // import Ionicons from '@expo/vector-icons/Ionicons';
 // import Ionicons from 'react-native-ionicons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {Center} from 'native-base';
 
 const homeName = 'Home';
-const addCarName = 'Add';
+const addCarName = 'New Car';
 const profileName = 'Profile';
 
 const Tab = createBottomTabNavigator();
@@ -35,15 +36,13 @@ export default function Router() {
           return <Ionicons name={iconName} size={size} color={color} />;
         },
       })}>
-      <Tab.Screen name="Home" component={Home} />
-      <Tab.Screen name="Add" component={AddCar} />
-      <Tab.Screen name="Profile" component={Profile} />
+      <Tab.Screen options={{headerShown: false}} name="Home" component={Home} />
+      <Tab.Screen name="New Car" component={AddCar} />
+      <Tab.Screen
+        options={{headerShown: false}}
+        name="Profile"
+        component={Profile}
+      />
     </Tab.Navigator>
-
-    // <Tab.Navigator>
-    //   <Tab.Screen name="Home" component={Home} />
-    //   <Tab.Screen name='AddCar' component={AddCar} />
-    //   <Tab.Screen name="Profile" component={Profile} />
-    // </Tab.Navigator>
   );
 }
