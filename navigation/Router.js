@@ -45,9 +45,13 @@ export default function Router() {
         name="Home"
         component={Home}
       />
-      <Tab.Screen name="New Car" component={AddCar} />
       <Tab.Screen
-        options={{headerShown: false}}
+        options={{headerTitleStyle: {color: '#ffffff'}}}
+        name="New Car"
+        component={AddCar}
+      />
+      <Tab.Screen
+        options={{headerTitleStyle: {color: '#ffffff'}}}
         name="Profile"
         component={Profile}
       />
