@@ -1,49 +1,52 @@
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View, TouchableOpacity} from 'react-native';
 import React from 'react';
-// import Carousel from 'react-native-snap-carousel';
-
-// const AddPostView = ({newImages, addImage}) => {
-//   const _renderItem = ({item, index}) => {
-//     return (
-//       <View style={styles.slide} key={index}>
-//         <Image
-//           style={{
-//             width: '88%',
-//             borderRadius: 15,
-//             height: 200,
-//           }}
-//           source={{uri: item.path}}
-//         />
-//         <View
-//           style={{
-//             marginTop: 10,
-//             flexDirection: 'row',
-//             alignItems: 'center',
-//           }}></View>
-//       </View>
-//     );
-//   };
-
-//   return (
-//     <View style={styles.container}>
-//       {newImages?.length > 0 ? (
-//         <Carousel
-//           data={newImages}
-//           renderItem={_renderItem}
-//           onSnapToItem={index => console.log(index)}
-//           sliderWidth={400}
-//           itemWidth={400}
-//           vertical={false}
-//         />
-//       ) : (
-//         <TouchableOpacity onPress={addImage} style={styles.noImage}>
-//           <Text style={styles.text}>Add Image</Text>
-//         </TouchableOpacity>
-//       )}
-//     </View>
-//   );
-// };
+import {
+  NativeBaseProvider,
+  VStack,
+  Center,
+  Text,
+  Input,
+  Button,
+} from 'native-base';
 
 export default function AddCar() {
-  return <View></View>;
+  return (
+    <NativeBaseProvider>
+      <VStack flex={1} bg={'#ffffff'} alignItems="center">
+        <TouchableOpacity
+          style={{
+            width: '100%',
+            alignItems: 'center',
+            height: '100%',
+          }}>
+          <Center
+            bg={'#E9EDF3'}
+            height="27%"
+            width={'90%'}
+            marginTop="5"
+            rounded={'2xl'}
+            shadow="1">
+            <Text>Add an Image</Text>
+          </Center>
+        </TouchableOpacity>
+
+        <Center width={'90%'} marginTop="-110%">
+          <Input variant="outline" placeholder="Vehicle Name" />
+          <Input variant="outline" placeholder="Model" marginTop={'3'} />
+          <Input variant="outline" placeholder="Transmission" marginTop={'3'} />
+          <Input variant="outline" placeholder="Fuel Type" marginTop={'3'} />
+          <Input variant="outline" placeholder="Price" marginTop={'3'} />
+
+          <Button
+            size="md"
+            marginTop={'8'}
+            variant="solid"
+            width={'50%'}
+            colorScheme={'green'}>
+            Save
+          </Button>
+        </Center>
+      </VStack>
+    </NativeBaseProvider>
+  );
 }
