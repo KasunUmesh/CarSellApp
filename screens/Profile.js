@@ -8,10 +8,11 @@ import {
   Heading,
   HStack,
   Text,
+  Button,
 } from 'native-base';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-export default function Profile() {
+export default function Profile({navigation}) {
   return (
     <NativeBaseProvider>
       <VStack flex={1} bg={'#ffffff'} alignItems="center">
@@ -97,6 +98,19 @@ export default function Profile() {
             </Text>
           </HStack>
         </TouchableOpacity>
+
+        <Center marginTop={10}>
+          <Button
+            size="md"
+            variant="subtle"
+            colorScheme={'darkBlue'}
+            leftIcon={<Ionicons name="log-out-outline" />}
+            onPress={() => {
+              navigation.navigate('Login');
+            }}>
+            Log Out
+          </Button>
+        </Center>
       </VStack>
     </NativeBaseProvider>
   );
